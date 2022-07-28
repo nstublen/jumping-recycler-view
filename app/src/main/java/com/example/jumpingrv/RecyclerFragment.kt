@@ -48,10 +48,12 @@ class RecyclerFragment : Fragment() {
 
     private fun buildSampleList(): List<ComposeViewState> {
         return MutableList(100) { index ->
-            ComposeViewState(
-                UUID.randomUUID(),
-                "$index"
-            )
+            val text = if (index % 2 == 0) {
+                "A single line of text"
+            } else {
+                "Multiple lines\nof text"
+            }
+            ComposeViewState(UUID.randomUUID(), text)
         }
     }
 }
